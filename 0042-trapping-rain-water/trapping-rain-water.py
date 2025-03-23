@@ -10,6 +10,9 @@ class Solution:
         # else: (this mean lowest wall is on right side r_max)
         # res += r_max - r_curr
 
+        #why this work? bc if we keep track of min max on both left and right, 
+        #we can guarantee min height to trap rain water
+
         res, l, r = 0, 0, len(height) - 1
         l_max, r_max = 0, 0
 
@@ -23,10 +26,11 @@ class Solution:
             if l_max < r_max: #(this mean lowest wall is on left side l_max)
                 res += l_max - l_curr
                 l += 1
-            else:
+            else: ##(this mean lowest wall is on left side l_max)
                 res += r_max - r_curr
                 r -= 1
         
         return res
 
         #O(N) O(1)
+
