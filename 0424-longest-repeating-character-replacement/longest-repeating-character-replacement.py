@@ -15,7 +15,7 @@ class Solution:
         #         mp[char] = 0
         #     mp[char] +=1
 
-        #     max_freq = max(max_freq, mp[s[left]])
+        #     max_freq = max(max_freq, mp[char])
 
         #     if right - left + 1 > k + max_freq:
         #         mp[s[left]] -= 1
@@ -32,7 +32,9 @@ class Solution:
         max_freq = 0
         
         for right, char in enumerate(s):
-            mp[char] = mp.get(char, 0) + 1
+            if char not in mp:
+                mp[char] = 0
+            mp[char] +=1
             max_freq = max(max_freq, mp[char])
             
             # If the number of chars to replace exceeds k, shrink the window
