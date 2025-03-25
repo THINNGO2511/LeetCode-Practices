@@ -5,9 +5,9 @@ class Solution:
 
         #approach: slding wind, O(n) O(n)
         # - use a left pointer = 0, with a for loop (for right in enumerate(s)):
-        # - use a set to check memebership
+        # - use a set to check membership
         # - as right idx iterate thru s, it adds in the set
-        # - while char in set, move left, bc it's more than 1 freq for that char
+        # - if char is in set alr, use while loop to move left, bc it's more than 1 freq for that char
 
         left, result = 0 ,0
         mp = set()
