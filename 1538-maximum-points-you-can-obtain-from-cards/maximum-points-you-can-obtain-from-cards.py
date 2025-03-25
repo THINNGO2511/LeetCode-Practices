@@ -9,7 +9,7 @@ class Solution:
         # add in curr_sum as curr_sum move from -k ind to 0
         # i>= 0 -> curr_sum -= cardPoints[i-k] (remove last elem from curr_sum)
         # curr_sum += cardPoints[i]
-        # O(N) O(1)
+        # O(k) O(1)
 
         curr_sum = max_sum = 0
 
@@ -25,3 +25,4 @@ class Solution:
             max_sum = max(max_sum, curr_sum)
 
         return max_sum
+         # O(k) O(1)
