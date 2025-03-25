@@ -7,41 +7,41 @@ class Solution:
         # window is valid if: curr wind len = k + most frq char num
         # ex: AABBB = 2(k) + 3 (BBB)
 
-        # mp = {}
-        # left, res, max_freq = 0, 0, 0
-
-        # for right, char in enumerate(s):
-        #     if char not in mp:
-        #         mp[char] = 0
-        #     mp[char] +=1
-
-        #     max_freq = max(max_freq, mp[char])
-
-        #     if right - left + 1 > k + max_freq:
-        #         mp[s[left]] -= 1
-        #         left += 1
-        #         if mp[s[left]] == 0: del mp[s[left]]
-
-        #     res = max(res, right - left + 1)
-
-        # return res
-
         mp = {}
-        left = 0
-        res = 0
-        max_freq = 0
-        
+        left, res, max_freq = 0, 0, 0
+
         for right, char in enumerate(s):
             if char not in mp:
                 mp[char] = 0
             mp[char] +=1
+
             max_freq = max(max_freq, mp[char])
-            
-            # If the number of chars to replace exceeds k, shrink the window
-            while (right - left + 1) - max_freq > k:
+
+            while (right - left + 1) > k + max_freq:
                 mp[s[left]] -= 1
                 left += 1
-            
+                if mp[s[left]] == 0: del mp[s[left]]
+
             res = max(res, right - left + 1)
-            
+
         return res
+
+        # mp = {}
+        # left = 0
+        # res = 0
+        # max_freq = 0
+        
+        # for right, char in enumerate(s):
+        #     if char not in mp:
+        #         mp[char] = 0
+        #     mp[char] +=1
+        #     max_freq = max(max_freq, mp[char])
+            
+        #     # If the number of chars to replace exceeds k, shrink the window
+        #     while (right - left + 1) - max_freq > k:
+        #         mp[s[left]] -= 1
+        #         left += 1
+            
+        #     res = max(res, right - left + 1)
+            
+        # return res
