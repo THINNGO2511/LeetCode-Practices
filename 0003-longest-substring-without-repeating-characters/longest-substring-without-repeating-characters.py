@@ -13,7 +13,7 @@ class Solution:
         mp = set()
 
         for right, char in enumerate(s):
-            #while statement to move left as long as char exists in mp
+            #while statement to move left as long as char exists in mp set
             while char in mp:
                 mp.remove(s[left])
                 left += 1
