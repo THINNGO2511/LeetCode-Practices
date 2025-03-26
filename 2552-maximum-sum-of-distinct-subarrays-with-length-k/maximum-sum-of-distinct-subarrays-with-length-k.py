@@ -24,4 +24,5 @@ class Solution:
 
             if (i - start + 1) == k: #if reach k len for slid win
                 max_sum = max(max_sum, curr_sum) #update max_sum in this wind
-        return max_sum
+
+        return max_sum # O(N) O(K)
