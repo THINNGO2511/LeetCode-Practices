@@ -12,18 +12,20 @@ class Solution:
         mp = set()
 
         for i in range(len(nums)):
+            #while loop to skip dup, if meet dup -> remove last sum at start idx, then remove elem from set and move start +=1
             while nums[i] in mp:
                 curr_sum -= nums[start]
                 mp.remove(nums[start])
                 start += 1
 
+            #after skip dup, safely update curr_sum with nums[i], and add it to mp set
             curr_sum += nums[i]
             mp.add(nums[i])
 
-            if (i - start + 1) == k: #reach k len for slid win
-                max_sum = max(max_sum, curr_sum)
-                curr_sum -= nums[start]
+            if (i - start + 1) == k: #if reach k len for slid win
+                max_sum = max(max_sum, curr_sum) #update max_sum in this wind
                 mp.remove(nums[start])
+                curr_sum -= nums[start]
                 start += 1
         
         return max_sum
