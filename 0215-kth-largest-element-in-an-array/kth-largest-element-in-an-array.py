@@ -3,18 +3,24 @@ import heapq
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        #or we can do heap
-        heap = nums[:k] #if k = 4, take first 4 element (this seves as a window)
-        heapq.heapify(heap)#heapify to sort, this is min-heap
+        #given: nums arr, k num, ask: return kth largest elem in nums
+        #qeustion: dup?neg elem? k<=0? guarantee ans? min size num?
+
+        #approach: min-heap, O(nlogk) (loop n times with O(k) heap ops) O(k) (k size heap)
+        #take in 1st k elem from nums, then heapify
+        #then run for loop [k:], compare heap[o] with nums[i], if larger
+        #then remove heap[o], add nums[i] to heap 
+        #return heap[o]
+
+        heap = nums[:k]
+        heapq.heapify(heap)
 
         for num in nums[k:]:
-            if num > heap[0]:
-                heapq.heappushpop(heap, num) # Push the element and pop the smallest one
+            if heap[0] < num:
+                heapq.heappop(heap)
+                heapq.heappush(heap, num)
         
-        return heap[0] # The root of the heap is the kth largest element
-
-        #time: 0(nlogk)
-        #space: 0(k) because we only have heap with k elements
+        return heap[0]
 
 
 
