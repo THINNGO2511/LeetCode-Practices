@@ -21,7 +21,7 @@ class Solution:
                 heapq.heappush(heap, num)
         
         return heap[0]
-
+        #O(nlogk) O(k)
 
 
 
