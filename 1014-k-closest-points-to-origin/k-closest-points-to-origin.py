@@ -15,7 +15,8 @@ class Solution:
             heapq.heappush(heap, (dist, x, y)) #put trip pair (dis,x,y) to heapify in heap
         
         for _ in range(k): #only need to iter k times to get k pairs
-            _, x, y = heapq.heappop(heap)
-            res.append((x, y))
+            _, x, y = heapq.heappop(heap) #getting elem from heap pop
+            res.append((x, y)) #push coord to res
 
         return res
+        #O(NlogK) O(K)
